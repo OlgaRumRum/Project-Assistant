@@ -207,6 +207,29 @@ Git хранит таблицу соответствий хеш → информ
 Состояние modified означает, что Git сравнил содержимое файла с последней сохранённой версией и нашёл отличия. Например, файл был закоммичен и после этого изменён.
 
 
+# Типичный жизненный цикл файла в Git
+
+HEAD -- это голова.
+
+
+Коммит -- это всему голова.
+
+
+Статусы файлов:
+
+
+```mermaid
+graph LR;
+  untracked -- "git add" --> staged (+ tracked);
+  staged (+ tracked) -- "изменение" --> modified (+ tracked);
+  staged (+ tracked) -- "git commit" --> tracked/comitted;
+  tracked/comitted -- "изменение" --> modified (+ tracked);
+  modified (+ tracked) -- "git add" --> staged (+ tracked);
+  
+```
+ 
+
+
 
 
 
